@@ -1,7 +1,7 @@
 {
-    "name": "chargely/chargify-sdk-php",
-    "homepage": "https://github.com/chargely/chargify-sdk-php",
-    "description": "Chargify SDK for PHP - Use the Chargify API in your PHP project",
+    "name": "ownego/chargify-sdk-php",
+    "homepage": "https://github.com/ownego/chargify-sdk-php",
+    "description": "Chargify SDK for PHP by Ownego - Use the Chargify API in your PHP project",
     "keywords": [
         "chargify",
         "chargify direct",
@@ -10,18 +10,19 @@
         "api",
         "sdk",
         "php",
-        "chargely"
+        "chargely",
+        "ownego"
     ],
     "type": "library",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "Chargely",
-            "homepage": "http://www.chargely.com"
+            "name": "Ownego",
+            "homepage": "http://www.ownego.com"
         }
     ],
     "support": {
-        "issues": "https://github.com/chargely/chargify-sdk-php/issues"
+        "issues": "https://github.com/ownego/chargify-sdk-php/issues"
     },
     "require": {
         "php": ">=5.5.0",
