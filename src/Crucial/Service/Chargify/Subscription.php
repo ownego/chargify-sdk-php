@@ -424,6 +424,37 @@ class Subscription extends AbstractEntity
     }
 
     /**
+     * Preview a new subscription.
+     *
+     * @return Subscription
+     * @see  Subscription::setProductHandle()
+     * @see  Subscription::setProductId()
+     * @see  Subscription::setCustomerId()
+     * @see  Subscription::setCustomerAttributes()
+     * @see  Subscription::setPaymentProfileAttributes()
+     * @see  Subscription::setCouponCode()
+     * @see  Subscription::setCustomerReference()
+     * @see  Subscription::setNextBillingAt()
+     * @link http://docs.chargify.com/api-subscriptions
+     * @link http://docs.chargify.com/api-coupons
+     */
+    public function preview()
+    {
+        $service       = $this->getService();
+        $rawData       = $this->getRawData(array('subscription' => $this->_params));
+        $response      = $service->request('subscriptions/preview', 'POST', $rawData);
+        $responseArray = $this->getResponseArray($response);
+
+        if (!$this->isError()) {
+            $this->_data = $responseArray['subscription_preview'];
+        } else {
+            $this->_data = array();
+        }
+
+        return $this;
+    }
+
+    /**
      * Set the given subscription ID to be canceled immediately
      *
      * @param int $id
