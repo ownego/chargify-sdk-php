@@ -34,6 +34,18 @@ class Component extends AbstractEntity
     }
 
     /**
+     * Set multiple allocations to create
+     *
+     * @param array $allocations
+     * @return Component
+     */
+    public function setAllocations(array $allocations) {
+        $this->setParam('allocations', $allocations);
+
+        return $this;
+    }
+
+    /**
      * Create a usage for a Metered Usage Component. Note that you can also send a
      * negative number to decrease the usage.
      *
@@ -250,6 +262,28 @@ class Component extends AbstractEntity
         }
 
         return $this;
+    }
+
+    /**
+     * Create multiple allocations for a subscription
+     *
+     * @param int $subscriptionId
+     * @return Component
+     */
+    public function createMultipleAllocations($subscriptionId) {
+        $service = $this->getService();
+        $rawData       = $this->getRawData($this->_params);
+        $response      = $service->request('subscriptions/' . (int) $subscriptionId . '/allocations', 'POST', $rawData);
+        $responseArray = $this->getResponseArray($response);
+
+        if (!$this->isError()) {
+            $this->_data = $responseArray;
+        } else {
+            $this->_data = array();
+        }
+
+        return $this;
+
     }
 
     /**
